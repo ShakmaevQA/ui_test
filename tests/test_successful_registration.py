@@ -16,10 +16,4 @@ class TestSuccessfulRegistration:
         registration_page.click_register_button()
 
         dashboard_page.check_visible_title()
-
-
-
-
-
-
-
+        

@@ -46,7 +46,7 @@ class CreateCoursePage(BasePage):
         self.create_course_min_score_input = page.get_by_test_id('create-course-form-min-score-input').locator('input')
 
         # Заголовок и кнопка создания задания
-        self.exercises_title = page.get_by_test_id('create-course-exercises-box-toolbar-title-text')
+        self.exercise_title = page.get_by_test_id('create-course-exercises-box-toolbar-title-text')
         self.create_exercise_button = page.get_by_test_id('create-course-exercises-box-toolbar-create-exercise-button')
 
         # Блок, который отображется, когда в курсе нет заданий
@@ -55,8 +55,6 @@ class CreateCoursePage(BasePage):
         self.exercises_empty_view_description = page.get_by_test_id(
             'create-course-exercises-empty-view-description-text'
         )
-
-
 
     def check_visible_create_course_title(self):
         expect(self.create_course_title).to_be_visible()
@@ -154,8 +152,8 @@ class CreateCoursePage(BasePage):
         expect(self.create_course_min_score_input).to_have_value(min_score)
 
     def check_visible_exercises_title(self):
-        expect(self.exercises_title).to_be_visible()
-        expect(self.exercises_title).to_have_text('Exercises')
+        expect(self.exercise_title).to_be_visible()
+        expect(self.exercise_title).to_have_text('Exercises')
 
     def check_visible_create_exercise_button(self):
         expect(self.create_exercise_button).to_be_visible()
