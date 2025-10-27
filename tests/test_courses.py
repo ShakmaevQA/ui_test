@@ -29,7 +29,7 @@ class TestCourses:
         #8
         create_course_page.check_visible_exercises_empty_view()
         #9
-        create_course_page.upload_preview_image('./testdata/files/image.jpg')
+        create_course_page.upload_preview_image('/Users/timur/PycharmProjects/ui_test/testdata/files/image.jpg')
         #10
         create_course_page.check_visible_image_upload_view()
         #11
