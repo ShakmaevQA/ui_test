@@ -1,12 +1,14 @@
 import pytest
 from playwright.sync_api import Page, expect
-from pages.course_list_page import CourseListPage
+from pages.course_list_page import CoursesListPage
 from pages.create_course_page import CreateCoursePage
 
 class TestCourses:
+
+
     @pytest.mark.courses
     @pytest.mark.regression
-    def test_create_course(self, course_list_page: CourseListPage, create_course_page: CreateCoursePage):
+    def test_create_course(self, course_list_page: CoursesListPage, create_course_page: CreateCoursePage):
         create_course_page.open('https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/courses/create')
         #1
         create_course_page.check_visible_create_course_title()
@@ -43,9 +45,21 @@ class TestCourses:
         #12
         create_course_page.click_create_course_button()
         #13
-        course_list_page.check_visible_title()
+        course_list_page.check_visible_courses_title()
         course_list_page.check_visible_create_course_button()
         course_list_page.check_visible_course_card(
             index=0, title="Playwright", max_score="100", min_score="10", estimated_time="2 weeks"
         )
+
+    @pytest.mark.courses
+    @pytest.mark.regression
+    def test_empty_courses_list(self, courses_list_page: CoursesListPage):
+        courses_list_page.open("https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/courses")
+
+        courses_list_page.navbar.check_visible('username')
+        courses_list_page.sidebar.check_visible()
+
+        courses_list_page.check_visible_courses_title()
+        courses_list_page.check_visible_create_course_button()
+        courses_list_page.check_visible_empty_view()
 
